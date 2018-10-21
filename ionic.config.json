@@ -1,0 +1,7 @@
+{
+  "name": "cu-conve",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
