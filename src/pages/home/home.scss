@@ -1,3 +1,25 @@
-page-home {
+$colors: (
+  primary:    #5f04c0,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f3f3f3,
+  dark:       #222
+);
 
+$font-stack: Roboto , 'sans-serif'; 
+
+page-home {}
+
+.contents {
+    margin: 20% 0;
+}
+
+.value-input {
+    font-family: $font-stack;
+    font-size: 20px;
+    padding: 0 3%;
+    background: color($colors,light);
+    box-shadow: rgba(34, 34, 34, 0.274) 2px 2px 5px 1px;
+    border-radius: 2px;
+    margin: 2% 0;
 }
