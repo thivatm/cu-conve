@@ -1,29 +1,24 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-//const APIKEY = '36c5ad864460b4395989f11d200fdc5c';
 
 @Injectable()
 export class CurrencyService {
 
     countryCodes: any[];
-    constructor(public http: Http) { }
+    countryNames: any[];
+    constructor(public http: HttpClient) { }
 
 
     getCountries() {
         this.http.get("http://data.fixer.io/api/symbols?access_key=36c5ad864460b4395989f11d200fdc5c")
-            .map(res => res.json()).subscribe((currencyData) => {
-                this.countryCodes = currencyData.symbols;
+            .subscribe((currencyData) => {
+                for (let x in currencyData["symbols"]){
+                    this.countryNames = currencyData["symbols"][x];
+                                        
+                }
             });
-        return this.countryCodes;
     }
-
-    // getCurrencyValue(from: string, to: string, amount: string) {
-    //     this.http.get("http://data.fixer.io/api/convert?access_key=${APIKEY}&from=${from}&to=${to}&amount=${amount}")
-    //         .map(res => res.json()).subscribe((data) => {
-
-    //         });
-    // }
 
 }
