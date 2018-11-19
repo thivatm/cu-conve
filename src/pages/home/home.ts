@@ -11,35 +11,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomePage {
 
-  currencyCodes = [];
-  currencyCodesCopy: any[];
+  countryCodes = [];
+  countryNames = [];
 
   constructor(public navCtrl: NavController, protected cuService: CurrencyService, public wheelPicker: WheelSelector, public http: HttpClient) {
+    this.cuService.getCountries();
     this.fetchValues();
   }
 
-  openCurrencyPicker() {
-      this.wheelPicker.show({
-        title: 'Currency Codes',
-        items: [
-          this.currencyCodes
-        ]
-      }).then(
-        result => {
-          console.log('Success: ', result);
-        },
-        err => console.log('Error: ', err)
-      );
-  }
+  calculateCurrency(from: String, to:String, amount: String) {
 
+
+  }
   fetchValues() {
     this.http.get("http://data.fixer.io/api/symbols?access_key=36c5ad864460b4395989f11d200fdc5c").subscribe(res => {
-      this.currencyCodesCopy = res['symbols'];
-      for (var x in this.currencyCodesCopy){
-        this.currencyCodes.push(x);
-        //console.log(x + " " + this.currencyCodesCopy[x]);        
-      } 
+      for (var x in res["symbols"]) {
+        this.countryNames = res["symbols"][x];
+        this.countryCodes.push(x);
+      }
     });
-    console.log("Success: " + this.currencyCodes);
+    console.log("From Server : " + this.cuService.countryCodes);
   }
 }

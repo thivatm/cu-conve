@@ -6,19 +6,28 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CurrencyService {
 
-    countryCodes: any[];
-    countryNames: any[];
+    countryCodes = [];
+    currencyMap = new Map();
     constructor(public http: HttpClient) { }
 
-
     getCountries() {
-        this.http.get("http://data.fixer.io/api/symbols?access_key=36c5ad864460b4395989f11d200fdc5c")
+        return this.http.get("http://data.fixer.io/api/symbols?access_key=36c5ad864460b4395989f11d200fdc5c")
             .subscribe((currencyData) => {
-                for (let x in currencyData["symbols"]){
-                    this.countryNames = currencyData["symbols"][x];
-                                        
+                for (let x in currencyData["symbols"]) {
+                    this.countryCodes.push(x);
+                    this.currencyMap.set('Description', x);
                 }
             });
     }
 
+    getExchangeRate(from: String, to: String){
+        return this.http.get("http://free.currencyconverterapi.com/api/v5/convert?q=" + from + "_" + to + "&compact=y")
+            .subscribe((exchangeRate) => {
+                
+            })
+    }
+
+    convertCurrency(){
+        
+    }
 }

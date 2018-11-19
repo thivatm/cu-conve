@@ -1,24 +1,26 @@
 <ion-content padding>
   <!-- #region -->
   <div class="contents">
-    <div class="sub-content">
+    <ion-row>
       <ion-input type="text" class="value-input"></ion-input>
-    </div>
+    </ion-row>
 
-    <div class="convert-content">
-      <ion-row>
-        <ion-col>
-          <button class="currency-code" ion-button full (click)="openCurrencyPicker()">TO</button>
-        </ion-col>
-        <ion-col>
-          <button class="currency-code" ion-button full (click)="fetchValues()">FROM</button>
-        </ion-col>
-      </ion-row>
-    </div>
-  
-    <div class="sub-content">
-      <ion-input type="text" class="value-input"></ion-input>
-    </div>
+    <ion-row>
+      <ion-col>
+        <select class="select-list">
+          <option *ngFor="let item of cuService.countryCodes">{{item}}</option>
+        </select>
+      </ion-col>
+      <ion-col>
+        <select class="select-list">
+          <option *ngFor="let item of cuService.countryCodes">{{item}}</option>
+        </select>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-input type="text" class="value-input"></ion-input>  
+    </ion-row>
   </div>
   <!-- #endregion -->
 </ion-content>
