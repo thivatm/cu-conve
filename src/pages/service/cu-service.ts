@@ -8,7 +8,6 @@ export class CurrencyService {
 
     countryCodes = [];
     currencyMap = new Map();
-    exchangeRate: any;
 
     constructor(public http: HttpClient) {}
 
@@ -23,11 +22,7 @@ export class CurrencyService {
     }
 
     getExchangeRate(from: String, to: String){
-        return this.http.get("http://free.currencyconverterapi.com/api/v5/convert?q=" + from + "_" + to + "&compact=y")
-            .subscribe((rate) => {
-                console.log("Rate: " + rate[from + "_" + to].val);
-                this.exchangeRate = rate[from + "_" + to].val;
-            });
-        }
+        return this.http.get("http://free.currencyconverterapi.com/api/v5/convert?q=" + from + "_" + to + "&compact=y").toPromise();    
+    }
 
 }

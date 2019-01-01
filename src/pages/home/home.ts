@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { CurrencyService } from "../service/cu-service";
 import { WheelSelector } from '@ionic-native/wheel-selector';
 import { HttpClient } from '@angular/common/http';
+import { isNumber } from 'ionic-angular/umd/util/util';
 
 
 @Component({
@@ -13,24 +14,37 @@ export class HomePage {
 
   countryCodes = [];
   countryNames = [];
-  currencyRate:any;
+  resultRate: any;
+  fromValue: any;
+  toValue: any;
+  fromCurr: any;
+  toCurr: any;
 
-  constructor(public navCtrl: NavController, protected cuService: CurrencyService, public wheelPicker: WheelSelector, public http: HttpClient) {
-    this.calculateCurrency("LKR", "USD", "12");
+  constructor(public navCtrl: NavController, protected cuService: CurrencyService, public http: HttpClient) {
     this.cuService.getCountries();
+    
   }
 
-  calculateCurrency(from: String, to:String, amount: String) {
-    this.currencyRate = this.cuService.getExchangeRate(from, to);
-    console.log("LKR_USD: " + this.cuService.exchangeRate);
+  async getCurrencyRate() {
+    let from = this.fromCurr;
+    let to = this.toCurr;
+    console.log('Curr: ' + from + '_' + to);
+    try {
+      const exchangeRate = await this.cuService.getExchangeRate(from, to);
+      let rate = exchangeRate[from + "_" + to].val;
+      this.resultRate = rate;
+      console.log('CurrencyRate: ' + this.resultRate);
+    }
+    catch (err) {
+      console.error(err);
+    }
   }
-  fetchValues() {
-    this.http.get("http://data.fixer.io/api/symbols?access_key=36c5ad864460b4395989f11d200fdc5c").subscribe(res => {
-      for (var x in res["symbols"]) {
-        this.countryNames = res["symbols"][x];
-        this.countryCodes.push(x);
-      }
-    });
-    console.log("From Server : " + this.cuService.countryCodes);
+
+  calculateCurrency() {
+    this.getCurrencyRate();
+    this.toValue = this.fromValue * parseInt(this.resultRate);
+    console.log('Final Value: ' + this.toValue);
   }
+
+
 }

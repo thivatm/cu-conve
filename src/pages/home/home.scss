@@ -18,19 +18,22 @@ page-home {}
     font: 25px $font-stack;
     margin: 2% 0;
     width: 100%;
-    padding: 2%;
+    padding: 0 3%;
     color: #222;
     border-radius: 7px;
-    box-shadow: 0 7.5px 10px 0 rgba(190, 190, 190, 0.5);
+    box-shadow: 0 7.5px 10px 0 rgba(41, 41, 41, 0.5);
     border: solid 0.5px rgba(236, 236, 236, 0.65);
     background-color: #ffffff;
 }
 
 .select-list {
     font-family: $font-stack;
+    font-size: 2em;
+    color: #f3f3f3;
+    width: 50%;
+    height: 300px;
     width: 59.5px;
     height: 39.5px;
-    border-radius: 7px;
-    box-shadow: 0 5px 5px 0 rgba(190, 190, 190, 0.5);
+    box-shadow: 0 5px 5px 0 rgba(39, 39, 39, 0.5);
     background-color: #9700ed;
 }
