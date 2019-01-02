@@ -21,19 +21,30 @@ export class HomePage {
   toCurr: any;
 
   constructor(public navCtrl: NavController, protected cuService: CurrencyService, public http: HttpClient) {
-    this.cuService.getCountries();
-    
+    this.fetchCountries();
+  }
+
+  /* An asynchronous function which retrieves 
+  CountryCode List
+  */
+  async fetchCountries() {
+    try {
+      const response = await this.cuService.getCountries();
+      for (let x in response['symbols']) {
+        this.countryCodes.push(x);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   async getCurrencyRate() {
     let from = this.fromCurr;
     let to = this.toCurr;
-    console.log('Curr: ' + from + '_' + to);
     try {
       const exchangeRate = await this.cuService.getExchangeRate(from, to);
       let rate = exchangeRate[from + "_" + to].val;
       this.resultRate = rate;
-      console.log('CurrencyRate: ' + this.resultRate);
     }
     catch (err) {
       console.error(err);
@@ -41,10 +52,8 @@ export class HomePage {
   }
 
   calculateCurrency() {
-    this.getCurrencyRate();
-    this.toValue = this.fromValue * parseInt(this.resultRate);
+    this.toValue = this.fromValue * parseFloat(this.resultRate);
     console.log('Final Value: ' + this.toValue);
   }
-
 
 }
