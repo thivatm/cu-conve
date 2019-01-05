@@ -51,9 +51,8 @@ export class HomePage {
     }
   }
 
-  calculateCurrency() {
+  calculateCurrencyOne() {
     this.toValue = this.fromValue * parseFloat(this.resultRate);
     console.log('Final Value: ' + this.toValue);
   }
-
 }

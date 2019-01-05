@@ -2,11 +2,11 @@
   <!-- #region -->
   <div class="contents">
     <ion-row>
-      <ion-input type="number" class="value-input" [(ngModel)]="fromValue" placeholder="from" (keyup)="calculateCurrency()"></ion-input>
+      <ion-input type="number" class="value-input" [(ngModel)]="fromValue" placeholder="from" (keyup)="calculateCurrencyOne()"></ion-input>
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col class="selectors">
         <select class="select-list" [(ngModel)]="fromCurr" (click)="getCurrencyRate()">
           <option *ngFor="let item of countryCodes" selected value="{{item}}">{{item}}</option>
         </select>
@@ -16,6 +16,18 @@
         <select class="select-list" [(ngModel)]="toCurr" (click)="getCurrencyRate()">
           <option *ngFor="let item of countryCodes" value="{{item}}">{{item}}</option>
         </select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="selector-txts">
+        <p>from</p>
+      </ion-col>
+      <ion-col>
+        <i class="fas fa-igloo"></i>
+      </ion-col>
+      <ion-col class="selector-txts">
+        <p>to</p>
       </ion-col>
     </ion-row>
 
