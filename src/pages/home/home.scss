@@ -6,13 +6,20 @@ $colors: (
   dark:       #222
 );
 
-$font-stack: Roboto , 'sans-serif'; 
+$font-stack: Roboto , 'sans-serif';
+$font-secondary: Open Sans, 'sans-serif'; 
 
 page-home {}
 
-.contents {
-    margin: 20% 0;
+.header p{
+    margin: 15% 2.5% 5% 2.5%;
+    color: #f3f3f3;
+    font-size: 40px;
+    font-style: $font-secondary;
+    font-weight: bold;
+    text-transform: uppercase;
 }
+
 
 .value-input {
     font: 25px $font-stack;
@@ -21,7 +28,7 @@ page-home {}
     padding: 0 3%;
     color: #222;
     border-radius: 7px;
-    box-shadow: 0 7.5px 10px 0 rgba(34, 34, 34, 0.219);
+    box-shadow: 0 10px 10px 0 rgba(34, 34, 34, 0.404);
     border: solid 0.5px rgba(236, 236, 236, 0.65);
     background-color: #ffffff;
 }
@@ -31,7 +38,7 @@ page-home {}
     margin: 5% auto;
     padding: 15px;
     display: block;
-    box-shadow: 0 5px 5px 0 rgba(34, 34, 34, 0.219);
+    box-shadow: 0 10px 10px 0 rgba(34, 34, 34, 0.404);
     background-color: #9700ed;
     border: 0 transparent;
     border-radius: 10px;
@@ -46,7 +53,15 @@ page-home {}
 
 .selector-txts p{
     font-size: 20px;
-    color: #bdbdbd;
+    color: #ececec;
     margin: 0 auto;
     text-align: center;
+}
+
+.title p{
+    text-transform: uppercase;
+    font-family: Open Sans, 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 2em;
+    padding: 10% 0 0 0;
 }
