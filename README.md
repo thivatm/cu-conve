@@ -1,4 +1,4 @@
-# cu-conve
+# Currency Converter
 
 cu-conve is a simple currency Conversion mobile application which is developed by using ionic framework.
 
@@ -11,5 +11,5 @@ cu-conve is a simple currency Conversion mobile application which is developed b
 
 ## Screenshot
 
-![screenshot](https://user-images.githubusercontent.com/25591638/50621713-a9e7da80-0f2d-11e9-92fb-f583b9bdce26.png)
+![screenshot_1547395699](https://user-images.githubusercontent.com/25591638/51087654-f926da00-177b-11e9-80d7-7de554cb901c.png)
 
