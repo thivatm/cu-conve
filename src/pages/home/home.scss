@@ -12,7 +12,7 @@ $font-secondary: Open Sans, 'sans-serif';
 page-home {}
 
 .header p{
-    margin: 15% 2.5% 5% 2.5%;
+    margin: 5% 2.5% 0% 2.5%;
     color: #f3f3f3;
     font-size: 40px;
     font-style: $font-secondary;
@@ -20,10 +20,14 @@ page-home {}
     text-transform: uppercase;
 }
 
+.contents {
+    margin: 10% 0 0 0;
+}
 
 .value-input {
     font: 25px $font-stack;
-    margin: 10% 2.5%;
+    font-weight: 300;
+    margin: 5% 2.5%;
     width: 100%;
     padding: 0 3%;
     color: #222;
@@ -43,18 +47,22 @@ page-home {}
     border: 0 transparent;
     border-radius: 10px;
     font-family: $font-stack;
+    font-weight: 300;
     font-size: 40px;
     color: #f3f3f3;
 }
 
 .selectors {
-    border-right: 1px solid rgba(150, 150, 150, 0.658);
+    border-right: 1px solid #cacaca;
 }
 
 .selector-txts p{
-    font-size: 20px;
-    color: #ececec;
+    font-size: 16px;
+    font-weight: 300;
+    color: #d8d8d8;
     margin: 0 auto;
+    padding: 0 15px;
+    display: block;
     text-align: center;
 }
 
@@ -64,4 +72,25 @@ page-home {}
     font-weight: bolder;
     font-size: 2em;
     padding: 10% 0 0 0;
+    text-align: start;
+}
+
+.card-view {
+    background-color: #2C1247;
+    border-radius: 10px;
+    margin: 5% auto;
+    padding: 2.5% 0;
+    box-shadow: 5px 10px 28px rgba(34, 34, 34, 0.6);
+}
+
+.card-header p{
+    color: #E0E0E0;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.card-contents p{
+    color: #E0E0E0;
+    font-size: 18px;
+    font-weight: 300;
 }

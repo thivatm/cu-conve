@@ -13,18 +13,20 @@ import { isNumber } from 'ionic-angular/umd/util/util';
 export class HomePage {
 
   countryCodes = [];
-  countryNames = [];
+  countryNames = new Map();
+
   resultRate: any;
   swappedRate: any;
 
   fromValue: any;
   toValue: any;
-  
+
   fromCurr: any = 'USD'; // default values
   toCurr: any = 'LKR'; // default values
 
   constructor(public navCtrl: NavController, protected cuService: CurrencyService, public http: HttpClient) {
     this.fetchCountries();
+    this.getCurrencyRate();
   }
 
   /* An asynchronous function which retrieves 
@@ -32,13 +34,15 @@ export class HomePage {
   */
   async fetchCountries() {
     try {
-      const response = await this.cuService.getCountries();
-      for (let x in response['symbols']) {
+      const res = await this.cuService.getCountries();
+      for (let x in res['results']) {
         this.countryCodes.push(x);
+        this.countryNames.set(x, res['results'][x].currencyName);
       }
     } catch (err) {
       console.error(err);
     }
+    console.log(this.countryNames);
   }
 
   async getCurrencyRate() {
@@ -55,7 +59,6 @@ export class HomePage {
     catch (err) {
       console.error(err);
     }
-    console.log("get exchange executued")
   }
 
   calculateCurrencyOne() {
