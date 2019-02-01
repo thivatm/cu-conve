@@ -25,6 +25,9 @@ export class HomePage {
   toCurr: any = 'LKR'; // default values
 
   constructor(public navCtrl: NavController, protected cuService: CurrencyService, public http: HttpClient) {
+  }
+
+  ngOnInit() {
     this.fetchCountries();
     this.getCurrencyRate();
   }
@@ -50,11 +53,8 @@ export class HomePage {
     let to = this.toCurr;
     try {
       const exchangeRate = await this.cuService.getExchangeRate(from, to);
-      const swapExchangeRate = await this.cuService.getExchangeRate(to, from);
       let rate = exchangeRate[from + "_" + to].val;
-      let swappedRate = swapExchangeRate[to + "_" + from].val;
       this.resultRate = rate;
-      this.swappedRate = swappedRate;
     }
     catch (err) {
       console.error(err);
@@ -67,7 +67,7 @@ export class HomePage {
   }
 
   calculateCurrencyTwo() {
-    this.fromValue = this.toValue * parseFloat(this.swappedRate);
+    this.fromValue = this.toValue / parseFloat(this.resultRate);
     console.log('Final Value: ' + this.toValue);
   }
 }

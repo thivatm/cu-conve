@@ -13,7 +13,7 @@ export class CurrencyService {
     }
 
     getExchangeRate(from: String, to: String){
-        return this.http.get("http://free.currencyconverterapi.com/api/v5/convert?q=" + from + "_" + to + "&compact=y").toPromise();    
+        return this.http.get(`http://free.currencyconverterapi.com/api/v5/convert?q=${from}_${to}&compact=y`).toPromise();    
     }
 
 }
