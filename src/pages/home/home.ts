@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CurrencyService } from "../service/cu-service";
-import { WheelSelector } from '@ionic-native/wheel-selector';
 import { HttpClient } from '@angular/common/http';
-import { isNumber } from 'ionic-angular/umd/util/util';
 
 
 @Component({
